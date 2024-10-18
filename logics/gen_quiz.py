@@ -2,13 +2,21 @@ from crewai_tools import  FileReadTool
 from crewai import Agent, Task, Crew
 import json, os, random
 
-FOLDER = '../data/new'
+from pathlib import Path
+
+FOLDER = 'data/new'
 ##pick a file from a folder 
 def random_file():
 
-    # Get the directory of the current script
-    base_dir = os.path.dirname(os.path.abspath(__file__))  
-    directory = os.path.join(base_dir, FOLDER )
+    # Current script directory
+    current_directory = Path(__file__).resolve()
+    # Parent directory
+    parent_directory = current_directory.parent
+
+
+    # # Get the directory of the current script
+    # base_dir = os.path.dirname(os.path.abspath(__file__))
+    directory = os.path.join(parent_directory, FOLDER )
 
 
     # List all files in the directory
