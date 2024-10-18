@@ -77,7 +77,7 @@ def next_question():
     st.session_state.answer_submitted = False
 
 # Title and description
-st.title("Quiz")
+st.title("Knowledge check: buying procedure for new flat")
 
 if st.session_state.quiz_data is  None:
     start_quiz()
