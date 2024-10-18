@@ -2,7 +2,7 @@ from crewai_tools import  FileReadTool
 from crewai import Agent, Task, Crew
 import json, os, random
 
-FOLDER = '../data/new'
+FOLDER = 'data/new'
 ##pick a file from a folder 
 def random_file():
 
