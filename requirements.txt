@@ -1,0 +1,8 @@
+streamlit
+crewai_tools 
+requests
+crewai
+openai
+pandas
+python-dotenv
+tiktoken
