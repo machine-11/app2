@@ -5,6 +5,7 @@ import json, os, random
 from pathlib import Path
 
 FOLDER = 'data/new'
+FOLDER = 'data/new'
 ##pick a file from a folder 
 def random_file():
 
