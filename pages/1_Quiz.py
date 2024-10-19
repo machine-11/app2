@@ -91,9 +91,10 @@ st.progress(progress_bar_value)
 # Display the question and answer options
 question_item = st.session_state.quiz_data[st.session_state.current_index]
 st.subheader(f"Question {st.session_state.current_index + 1}")
-st.header(f"{question_item['question']}")
+st.subheader(f"{question_item['question']}")
 # st.write(question_item['information'])
 
+st.markdown(""" ___""")
 
 # Answer selection
 options = question_item['options']
