@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 app.url
+99_*
+*.zip
 # Virtual environments
 venv/
 env/

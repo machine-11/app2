@@ -18,12 +18,7 @@ if not check_password():
 
 
 
-def start_quiz():
-    st.session_state.quiz_data = gen_quiz.gen_quiz()
-    st.session_state.current_index = 0
-    st.session_state.score = 0
-    st.session_state.selected_option = None
-    st.session_state.answer_submitted = False
+
 
 # Custom CSS for the buttons
 st.markdown("""
