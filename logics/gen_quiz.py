@@ -1,9 +1,23 @@
 import json, os, random
+from pathlib import Path
+
+FOLDER_1 = 'data'
+FOLDER_2= 'new'
+
 
 def random_file():
 
     # Specify the directory
-    directory = 'data\\new'  # Replace with your directory path
+    # Current script directory
+    current_directory = Path(__file__).resolve()
+    # Parent directory
+    parent_directory = current_directory.parent.parent
+
+    # # Get the directory of the current script
+    # base_dir = os.path.dirname(os.path.abspath(__file__))
+    directory = os.path.join(parent_directory, FOLDER_1 )
+    directory = os.path.join(directory, FOLDER_2 )
+
 
     # List all files in the directory
     files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
