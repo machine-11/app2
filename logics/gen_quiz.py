@@ -49,7 +49,7 @@ def gen_crew():
     task_setquiz= Task(
         description="come up with 10 multiple choice questions to test understanding of  policy and steps related to process of buying new flats covered in any one of files, \
         ",
-        tools=[],
+        tools=[ FileReadTool()],
         agent=agent_setter ,
         expected_output=''' The questions should not be repeated between runs. Give list of multiple choice questions in json format as below , do not incluse any preamble or "json" \
             
@@ -80,9 +80,10 @@ def gen_crew():
 def run_crew(crew):
 
     file_path = random_file() 
-    tool_read = FileReadTool( file_path=file_path,  encoding="cp437", errors='ignore')
+    # tool_read = FileReadTool( file_path=file_path,  encoding="cp437", errors='ignore')
 
-    crew.tasks[0].tools = [tool_read]
+    # crew.tasks[0].tools = [tool_read]
+    crew.tasks[0].tools[0].file_path = file_path
     crew.kickoff()
 
     task_output =   crew.tasks[0].output
