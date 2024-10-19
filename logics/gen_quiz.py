@@ -30,7 +30,78 @@ def random_file():
         return os.path.join(directory , selected_file)
     else:
         print('No files found in the directory.')
+
+##set up agent/task/crew
+def gen_crew():
+
+    # file_path = random_file() 
+    # tool_read = FileReadTool( file_path=file_path,  encoding="cp437", errors='ignore')
+    agent_setter = Agent(
+        role='Public Relationship guru and  from HDB',
+        goal=f'To design quiz to improve learners'' understanding of important policy and steps related to process of buying new flats',
+        backstory='You are an experienced exam setter  and your skilles in designing comprehensive quiz to test learners'' understanding of documents are unparallel',
+        verbose=True,
+        allow_delegation=False,
+        # memory = True,
+       
+    )
+
+    task_setquiz= Task(
+        description="come up with 10 multiple choice questions to test understanding of  policy and steps related to process of buying new flats covered in any one of files, \
+        ",
+        tools=[],
+        agent=agent_setter ,
+        expected_output=''' The questions should not be repeated between runs. Give list of multiple choice questions in json format as below , do not incluse any preamble or "json" \
+            
+        [
+            {
+            "question": "xxx",
+            "options": [
+                "x",
+                "x",
+                "x,
+                "x"
+            ],
+            "answer": "x"
+            },
+         
+        ...
+        ]    '''
         
+    )
+    crew = Crew(
+        agents=[agent_setter],
+        tasks=[task_setquiz ]
+    )
+    
+    return crew
+
+##retuen json list from crew
+def run_crew(crew):
+
+    file_path = random_file() 
+    tool_read = FileReadTool( file_path=file_path,  encoding="cp437", errors='ignore')
+
+    crew.tasks[0].tools = [tool_read]
+    crew.kickoff()
+
+    task_output =   crew.tasks[0].output
+    print(f"Task Description: {task_output.description}")
+    print(f"Task Summary: {task_output.summary}")
+    print(f"Raw Output: {task_output.raw}")
+
+    if task_output.json_dict:
+        print(f"JSON Output: {json.dumps(task_output.json_dict, indent=2)}")
+    if task_output.pydantic:
+        print(f"Pydantic Output: {task_output.pydantic}")
+
+    try:
+        o = json.loads(task_output.raw ) 
+    except:
+        o = run_crew(crew)
+    return o
+
+
 ## gen mcq based on the file
 def gen_quiz():
 
@@ -100,4 +171,6 @@ def gen_quiz():
 
 if __name__ == "__main__":
     # print(random_file() )
-    gen_quiz()
+    # gen_quiz()
+    run_crew(gen_crew())
+
