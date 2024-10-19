@@ -9,6 +9,22 @@ if not check_password():
     st.stop()
 
 
+
+# def run():
+#     st.set_page_config(
+#         page_title="Quiz",
+#         # page_icon="❓",
+#     )
+
+
+
+def start_quiz():
+    st.session_state.quiz_data = gen_quiz.gen_quiz()
+    st.session_state.current_index = 0
+    st.session_state.score = 0
+    st.session_state.selected_option = None
+    st.session_state.answer_submitted = False
+
 # Custom CSS for the buttons
 st.markdown("""
 <style>
@@ -22,23 +38,16 @@ st.markdown("""
             <style>.big-font {font-size: 120px ;}</style>
             """, unsafe_allow_html=True)
 
+
 # Initialize session variables if they do not exist
-default_values = {'crew': None ,
-                    'quiz_data': None ,
-                    'current_index': 0, 
-                    'current_question': 0, 
-                    'score': 0, 
-                    'selected_option': None,
-                    'answer_submitted': False
-                    }
+default_values = {'quiz_data': None , 'current_index': 0, 'current_question': 0, 'score': 0, 'selected_option': None, 'answer_submitted': False}
 for key, value in default_values.items():
     st.session_state.setdefault(key, value)
 
 
 
 def start_quiz():
-    st.session_state.crew = gen_quiz.gen_crew()
-    st.session_state.quiz_data = gen_quiz.run_crew(st.session_state.crew )
+    st.session_state.quiz_data = gen_quiz.gen_quiz()
     st.session_state.current_index = 0
     st.session_state.score = 0
     st.session_state.selected_option = None
@@ -46,11 +55,7 @@ def start_quiz():
 
 
 def restart_quiz():
-    st.session_state.quiz_data = gen_quiz.run_crew(st.session_state.crew )
-    st.session_state.current_index = 0
-    st.session_state.score = 0
-    st.session_state.selected_option = None
-    st.session_state.answer_submitted = False
+    start_quiz()
 
 
 def submit_answer():
@@ -72,10 +77,9 @@ def next_question():
     st.session_state.answer_submitted = False
 
 # Title and description
-st.title("Quiz")
-st.subheader("All about buying new flats")
+st.title("Knowledge check: buying procedure for new flats")
 
-if st.session_state.crew is None and st.session_state.quiz_data is  None :
+if st.session_state.quiz_data is  None:
     start_quiz()
 
 # Progress bar
