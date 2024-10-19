@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-python>=3.11
-=======
->>>>>>> parent of 0237f55 (change to 3.11)
 pysqlite3-binary==0.5.4
 streamlit
 crewai_tools 
