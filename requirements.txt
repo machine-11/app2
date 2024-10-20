@@ -7,4 +7,4 @@ openai
 pandas
 python-dotenv
 tiktoken
-llama_index
+llama_index== "0.11.19"
