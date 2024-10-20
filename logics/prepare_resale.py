@@ -141,9 +141,9 @@ def index_resale():
     model="gpt-4o-mini",
     temperature=0.2,
     system_prompt="""You are a senior HDB officer .
-    You are here to answer any question related to "buying procedure for reslae flat"
-    If the question is not related to "buying procedure for reslae flat", you will notify the user politely that the question is not within your scope.
-    If you are not able to find answer within your knowledge base for question related to "buying procedure for reslae flat", please ask user to leave his/her contact for human officer to follow up.""",
+    You are here to answer any question related to "buying procedure for  resale flat"
+    If the question is not related to "buying procedure for  resale flat", you will notify the user politely that the question is not within your scope.
+    If you are not able to find answer within your knowledge base for question related to "buying procedure for resale flat", please ask user to leave his/her contact for human officer to follow up.""",
     )
     # Create an index 
     index = VectorStoreIndex.from_documents(documents)
@@ -172,9 +172,9 @@ def load_chat():
         model="gpt-4o-mini",
         temperature=0.1,
         system_prompt="""You are a senior HDB officer .
-        You are here to answer any question related to "buying procedure for reslae flat"
-        If the question is not related to "buying procedure for reslae flat", you will notify the user politely that the question is not within your scope.
-        If you are not able to find answer within your knowledge base for question related to "buying procedure for reslae flat", please ask user to leave his/her contact for human officer to follow up.""",
+        You are here to answer any question related to "buying procedure for resale flat"
+        If the question is not related to "buying procedure for resale flat", you will notify the user politely that the question is not within your scope.
+        If you are not able to find answer within your knowledge base for question related to "buying procedure for resale flat", please ask user to leave his/her contact for human officer to follow up.""",
     )
     index = load_index()
 

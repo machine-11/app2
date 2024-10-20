@@ -3,12 +3,12 @@ import streamlit as st
 from logics import prepare_resale 
 
 st.title("Chat")
-st.subheader("Buying procedure for reslae flat")
+st.subheader("Buying procedure for resale flat")
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": '''Ask me a question about "buying procedure for reslae flats"''',
+            "content": '''Ask me a question about "buying procedure for  resale flats"''',
         }
     ]
 
@@ -21,7 +21,7 @@ if "chat_engine" not in st.session_state.keys():
     st.session_state.chat_engine = load_chat()
 
 # fake prompt
-if prompt := st.chat_input("Ask a question about buying procedure for reslae flats"):  
+if prompt := st.chat_input("Ask a question about buying procedure for resale flats"):  
     st.session_state.messages.append({"role": "user", "content": prompt})
 
 # Write existing conversation
