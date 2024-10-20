@@ -6,7 +6,7 @@ from crewai import Agent, Task, Crew
 import json, os, random
 
 from llama_index import VectorStoreIndex, SimpleDirectoryReader
-# from llama_index.core import Settings
+from llama_index.core import Settings
 from llama_index.core import StorageContext, load_index_from_storage
 from llama_index.llms.openai import OpenAI
 
