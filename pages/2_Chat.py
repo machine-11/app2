@@ -2,13 +2,21 @@
 import streamlit as st
 from logics import prepare_resale 
 
+
+from helper_functions.utility import check_password  
+
+# Check if the password is correct.  
+if not check_password():  
+    st.stop()
+
+
 st.title("Chat")
 st.subheader("Buying procedure for resale flat")
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": '''Ask me a question about "buying procedure for  resale flats"''',
+            "content": '''Ask me a question about "buying procedure for resale flats"''',
         }
     ]
 

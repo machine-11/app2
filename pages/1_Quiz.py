@@ -8,17 +8,10 @@ from helper_functions.utility import check_password
 if not check_password():  
     st.stop()
 
+# Title and description
 
-
-# def run():
-#     st.set_page_config(
-#         page_title="Quiz",
-#         # page_icon="❓",
-#     )
-
-
-
-
+st.title("Quiz")
+st.subheader("All about buying new flats")
 
 # Custom CSS for the buttons
 st.markdown("""
@@ -71,9 +64,7 @@ def next_question():
     st.session_state.selected_option = None
     st.session_state.answer_submitted = False
 
-# Title and description
-st.header("Quiz")
-st.subheader("All about buying new flats")
+
 
 if st.session_state.quiz_data is  None:
     start_quiz()
