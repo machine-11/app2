@@ -3,11 +3,11 @@ import streamlit as st
 from logics import crew_elig
 
 
-# from helper_functions.utility import check_password  
+from helper_functions.utility import check_password  
 
-# # Check if the password is correct.  
-# if not check_password():  
-#     st.stop()
+# Check if the password is correct.  
+if not check_password():  
+    st.stop()
 
 st.title("Advisory")
 st.subheader("Understanding HDB flat eligibility and housing loan options")
